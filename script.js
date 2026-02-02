@@ -48,28 +48,6 @@ function updateStars() {
     }
 }
 
-const button = document.getElementById("valentinesButton");
-
-button.addEventListener("click", () => {
-  if (button.textContent === "Click Me! ❤") {
-    button.textContent = "loading...";
-    fetch('send_mail.php')
-      .then(response => {
-        if (response.ok) {
-          button.textContent = "Check Your Email 🙃";
-        } else {
-          console.error('Failed to send email');
-          button.textContent = "Error 😞";
-        }
-      })
-      .catch(error => {
-        // Handle network errors or other issues
-        console.error('Error:', error);
-        button.textContent = "Error 😞";
-      });
-  }
-});
-
 function drawTextWithLineBreaks(lines, x, y, fontSize, lineHeight) {
     lines.forEach((line, index) => {
         context.fillText(line, x, y + index * (fontSize + lineHeight));
@@ -189,9 +167,9 @@ function drawText() {
         context.fillStyle = `rgba(45, 45, 255, ${opacity})`;
 
         if (window.innerWidth < 600) {
-            drawTextWithLineBreaks(["I love you so much {name}, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
+            drawTextWithLineBreaks(["I love you so much Bronte, more than", "all the time and space in the universe can contain"], canvas.width / 2, canvas.height / 2, fontSize, lineHeight);
         } else {
-            context.fillText("I love you so much {name}, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
+            context.fillText("I love you so much Bronte, more than all the time and space in the universe can contain", canvas.width/2, canvas.height/2);
         }
 
         opacity = opacity + 0.01;
@@ -214,8 +192,6 @@ function drawText() {
         context.fillStyle = `rgba(45, 45, 255, ${thirdOpacity})`;
         context.fillText("Happy Valentine's Day <3", canvas.width/2, (canvas.height/2 + 120));
         thirdOpacity = thirdOpacity + 0.01;
-
-        button.style.display = "block";
     }   
 
      // Reset the shadow effect after drawing the text
